@@ -40,10 +40,10 @@
     <body>
             <div class="topnav">
                     <div class="active" href="#profile">
-                        <s:form action="wall">
-                            <s:submit value="wall"></s:submit>
-                          </s:form>
-      
+                      <s:form action="wall">
+                      <s:submit value="wall"></s:submit>
+                    </s:form>
+
                       <s:form action="profile">
                         <s:submit value="profile"></s:submit>
                       </s:form>
@@ -64,18 +64,14 @@
                     <s:form action="postComment">
                       <s:submit value="post comment to a wall"></s:submit>
                     </s:form>
-                    
-                      <s:form action="logout">
+                    <s:form action="logout">
                       <s:submit value="logout"></s:submit>
                     </s:form>
-                </s:form>
-                    
-                    
-                  
-                  </div>
+                </div>
                   
                   <div style="padding-left:16px">
-                   Error: you have no friends.
+                    <h1>View Friend</h1>
+                    <p>No friends found</p>
                   </div>
     </body>
 </html>

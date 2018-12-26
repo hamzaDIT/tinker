@@ -20,6 +20,7 @@ public class Tinker extends ActionSupport implements SessionAware{
 	//arraylists of users and friends
 	private ArrayList<User> users=new ArrayList<User>();
 	private ArrayList<String> friends=new ArrayList<String>();
+	private ArrayList<String> friendsInverse=new ArrayList<String>();// Example: if John adds Tommy from John's profile, then this arraylist makes sure that John is also added as a friend in Tommy's profile. This may not be an optimal solution but it is the only one I know how to implement.
 	//sessions
 	private Map<String, Object> session;
 	//for adding friend
@@ -98,6 +99,29 @@ public class Tinker extends ActionSupport implements SessionAware{
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tinker", "root", "root");
 			// insert data
 			PreparedStatement createFriend = connection.prepareStatement("INSERT into friends(username, userid)" + "VALUES(?,?)");
+			createFriend.setString(1, u.getUsername());
+			createFriend.setString(2, user.getUserid());
+			@SuppressWarnings("unused")
+			int rowsUpdated = createFriend.executeUpdate();
+			createFriend.close();
+			connection.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		
+		
+		try {
+			Connection connection;
+			// connect to database
+			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tinker", "root", "root");
+			// insert data
+			PreparedStatement createFriend = connection.prepareStatement("INSERT into friends(username, userid)" + "VALUES(?,?)");
 			createFriend.setString(1, user.getUsername());
 			createFriend.setString(2, u.getUserid());
 			@SuppressWarnings("unused")
@@ -107,7 +131,7 @@ public class Tinker extends ActionSupport implements SessionAware{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	//}
+
 		
 	}
 	
@@ -213,6 +237,7 @@ public class Tinker extends ActionSupport implements SessionAware{
 	
 	
 	private User findFriend(){
+		
 		try {
 			Connection connection;
 			// connect to database
@@ -593,22 +618,6 @@ public class Tinker extends ActionSupport implements SessionAware{
 
 
 
-
-
-//	public static void main(String [] args){
-//		
-//		Tinker tinker=new Tinker();
-//		tinker.setDob("04/06/1997");
-//		tinker.setEmail("tommy@gmail.com");
-//		tinker.setFirstName("tommy");
-//		tinker.setLastName("tatti");
-//		tinker.setGender("male");
-//		tinker.setPassword("pass");
-//		tinker.setUsername("tommy");
-//
-//		tinker.viewFriends();
-//		
-//	}
 
 
 

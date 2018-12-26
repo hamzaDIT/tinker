@@ -72,7 +72,13 @@
                   <div style="padding-left:16px">
                     <h1>This is Your Profile</h1>
                     <h2>Your details:</h2>
-                    <s:property value="#session.currentUser" />    
+                    Username: <s:property value="#session.currentUser.username" /><br/>
+                    First Name: <s:property value="#session.currentUser.firstName" /><br/>
+                    Last Name: <s:property value="#session.currentUser.lastName" /><br/>
+                    Email: <s:property value="#session.currentUser.email" /><br/>
+                    Password: <s:property value="#session.currentUser.password" /><br/>
+                    Birthday: <s:property value="#session.currentUser.birthday" /><br/>
+                    Gender: <s:property value="#session.currentUser.gender" /><br/>
                     <s:property value="profileString" />
 
                   </div>
