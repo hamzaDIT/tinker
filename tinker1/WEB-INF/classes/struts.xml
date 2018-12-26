@@ -1,0 +1,68 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="default" extends="struts-default">
+       
+        <action name="login" class="tinker.Tinker" method="login">
+            <result name="WALL">/profile.jsp</result>
+            <result name="FAIL">/fail.jsp</result>
+        </action>
+
+         <action name="wall" class="tinker.Tinker" method="wall">
+           <result name="WALL">/success.jsp</result>
+           <result name="FAILWALL">/failWall.jsp</result>
+        </action>
+
+        <action name="register">
+            <result>/register.jsp</result>
+        </action>
+
+        <action name="createUser" class="tinker.Tinker" method="register">
+            <result name="WALL">/success.jsp</result>
+            <result name="FAIL">/fail.jsp</result>
+        </action>
+
+        <action name="profile" class="tinker.Tinker" method="profile">
+            <result name="SUCCESS">/profile.jsp</result>
+        </action>
+
+        <action name="addFriend">
+            <result>/addFriend.jsp</result>
+        </action>
+
+        <action name="addingFriend" class="tinker.Tinker" method="addingFriend">
+            <result name="SUCCESS">/addFriendSucess.jsp</result>
+            <result name="FAIL">/fail.jsp</result>
+        </action>
+
+        <action name="viewFriends" class="tinker.Tinker" method="viewFriends">
+            <result name="SUCCESS">/viewFriends.jsp</result>
+            <result name="FAIL">/failViewFriends.jsp</result>
+        </action>
+
+        <action name="viewAllMembers" class="tinker.Tinker" method="viewAllMembers">
+            <result name="SUCCESS">/viewAllMembers.jsp</result>
+            <result name="FAIL">/fail.jsp</result>
+
+        </action>
+
+        <action name="postComment">
+            <result>/postComment.jsp</result>
+        </action>
+
+        <action name="logout">
+            <result>/index.jsp</result>
+        </action>
+
+        <action name="postToWall" class="tinker.Tinker" method="postToWall">
+            <result name="SUCCESS">/postCommentSuccess.jsp</result>
+            <result name="DATABASEERROR">/failWall.jsp</result>
+            <result name="NOCOMMENT">/fail.jsp</result>
+            <result name="NOTFOUND">/addFriend.jsp</result>
+         </action>
+
+
+    </package>
+</struts>
